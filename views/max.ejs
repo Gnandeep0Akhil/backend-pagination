@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/all.css" type="text/css">
+    </head>
+    <body>
+        <div class="div" style="width: 100%;">
+        <div class="main" style="width: 40%;">
+        <h3>Pagination backend.(Population for a given Location)</h3>
+        <form action="/get" method="GET">
+            <input type="text" name="state" placeholder="state">
+            <input type="text" name="city" placeholder="city"><br><br>
+            <!-- <label for="popRange">Population range:</label>
+            <select name="popRange">
+                <option value="lessThan">Numb</option>
+                <option value="inBetween">Saab</option>
+                <option value="greaterThan">Fiat</option>
+            </select><br><br> -->
+            <label for="sortField">Sorting field:</label>
+            <select name="sortField">
+                <option value="">select...</option>
+                <option value="state">State</option>
+                <option value="city">City</option>
+                <option value="pop">Population</option>
+            </select>
+            <label for="sortOrder">Sort Order:</label>
+            <select name="sortOrder">
+                <option value="">select...</option>
+                <option value="1">Ascending</option>
+                <option value="-1">Descending</option>
+            </select><br><br>
+            <label for="rowNumb">ItemsperPage:</label>
+            <select name="rowNumb">
+                <option value="">select...</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+            </select><span style="color: rgb(255, 0, 0); font-size: larger;"> *</span>
+            <input type="number" name="pageNumb" placeholder="Page number?"><span> *</span>
+            <input type="submit">
+            <p style="color: rgb(255, 0, 0);"> (*) Required</p>
+            <p>Note: Fill any one of state and city fields</p>
+            <p>Note: If nothing is displayed, page number exceeded</p>
+        </form>
+        </div>
+        <div>
+            <form action="/get/max" method="GET">
+                <h4>Get</h4>
+                <input type="number" name="numb" placeholder="Number of results">
+                <h4>cities with maximum paopulation.</h4>
+                <input type="submit">
+            </form>
+        </div>
+        <div class="sampleData" style="width: 30%;" >
+            <h4>Sample data:</h4>
+            <p>State: MA</p>
+            <p>City: Chester</p>
+        </div>
+        </div>
+        <table>
+        <h4>Query results.(Change query in the URL)</h4>
+        <tr>
+            <th>City</th>
+            <th>Total Population</th>
+        </tr>
+		<% sites.forEach((item)=>{%>
+        <tr>
+            <td><%=item._id%></td>
+            <td><%=item.pop%></td>
+        </tr>
+        <%})%>
+        </table>
+    </body>
+</html>
